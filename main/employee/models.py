@@ -20,8 +20,8 @@ class Book(models.Model):
     year_of_publication = models.IntegerField("Рік публікації")
     author = models.CharField("Автор", max_length=40)
     genre = models.CharField("Жанр", max_length=35)
-    cost = models.CharField("Собівартість")
-    potential_selling_price = models.CharField("Потенційна ціна продажу")
+    cost = models.IntegerField("Собівартість")
+    potential_selling_price = models.IntegerField("Потенційна ціна продажу")
 
     def __str__(self):
         return self.title
@@ -31,7 +31,7 @@ class Sales(models.Model):
     employee = models.CharField("Співробітник", max_length=80)
     book = models.CharField("Книга", max_length=30)
     date = models.DateField("Дата продажу")
-    real_selling_price = models.CharField("Реальна ціна продажу")
+    real_selling_price = models.IntegerField("Реальна ціна продажу")
 
     def __str__(self):
         return self.employee
