@@ -11,7 +11,6 @@ class Employee(models.Model):
     contact_phone = models.CharField("Контактний телефон", max_length=19)
     email = models.CharField("Електронна пошта", max_length=60)
     password = models.CharField("Пароль", max_length=30)
-    sales = models.ManyToManyField("Продажі")
     profit = models.IntegerField("Прибуток")
 
     def __str__(self):

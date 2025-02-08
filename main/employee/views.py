@@ -39,7 +39,6 @@ def show_create(request):
         form = EmployeeForm(request.POST)
         if form.is_valid():
             employee = form.save(commit=False)
-            employee.sales = ""
             employee.profit = 0
             employee.save()
             return redirect("login")
