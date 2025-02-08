@@ -4,4 +4,4 @@ from django.shortcuts import render
 
 
 def show_moderator_menu(request):
-    return render(request, "moderator/main_menu.html")
+    return render(request, "moderator/employee_menu.html")

@@ -10,9 +10,12 @@ class Employee(models.Model):
     position = models.CharField("Посвдв", max_length=30)
     contact_phone = models.CharField("Контактний телефон", max_length=19)
     email = models.CharField("Електронна пошта", max_length=60)
+    password = models.CharField("Пароль", max_length=30)
+    sales = models.ManyToManyField("Продажі")
+    profit = models.IntegerField("Прибуток")
 
     def __str__(self):
-        return self.surname
+        return self.email
 
 
 class Book(models.Model):
