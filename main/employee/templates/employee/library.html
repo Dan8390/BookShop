@@ -1,9 +1,23 @@
 {% extends 'main/layout.html' %}
 
 {% block title %}
-    <title>Title</title>
+    <title>Library</title>
 {% endblock %}
 
 {% block content %}
+<h1>Бібліотека</h1><br>
+{% for book in books %}
+<div>
+    <h3>{{book.title}}</h3>
+    <h5>Рік публікації: {{book.year_of_publication}}</h5>
+    <h5>Автор: {{book.author}}</h5>
+    <h5>Жанр: {{book.genre}}</h5>
+    <h5>Собівартість: {{book.cost}} грн</h5>
+    <h5>Потенційна ціна продажу: {{book.potential_selling_price}} грн</h5>
+    <button>Продати</button><br><br>
+</div>
+{% endfor %}
+
+<a href="{% url 'employee_menu' employee_id=employee.id %}">Назад</a>
 
 {% endblock %}

@@ -1,9 +1,22 @@
 {% extends 'main/layout.html' %}
 
 {% block title %}
-    <title>Title</title>
+    <title>Account</title>
 {% endblock %}
 
 {% block content %}
+<div>
+    <h1>Ваш профіль</h1><br>
+    <h5>Прізвище: {{employee.surname}}</h5>
+    <h5>Ім'я: {{employee.name}}</h5>
+    <h5>По батькові: {{employee.middle_name}}</h5>
+    <h5>Посада: {{employee.position}}</h5>
+    <h5>Електронна пошта: {{employee.email}}</h5>
+    <h5>Контактний телефон: {{employee.contact_phone}}</h5>
+    <h5>Пароль: {{employee.password}}</h5><br>
+</div>
+
+<a href="{% url 'employee_update' employee.id %}">Редагувати дані</a><br><br>
+<a href="{% url 'employee_menu' employee_id=employee.id %}">Назад</a>
 
 {% endblock %}

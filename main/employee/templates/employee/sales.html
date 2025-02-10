@@ -1,9 +1,16 @@
 {% extends 'main/layout.html' %}
 
 {% block title %}
-    <title>Title</title>
+    <title>Employee sales</title>
 {% endblock %}
 
 {% block content %}
+<h1>Ваші продажі</h1><br>
+{% for sale in employee_sales %}
+    <h5>Книга: {{sale.book.title}}</h5>
+    <h5>Дата продажу: {{sale.date}}</h5>
+    <h5>Реальна ціна продажу: {{sale.real_selling_price}} грн</h5><br>
+{% endfor %}
+<a href="{% url 'employee_menu' employee_id=employee.id %}">Назад</a>
 
 {% endblock %}
