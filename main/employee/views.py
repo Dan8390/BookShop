@@ -38,11 +38,9 @@ def show_create(request):
     if request.method == "POST":
         form = EmployeeForm(request.POST)
         if form.is_valid():
-            employee = form.save(commit=False)
-            employee.profit = 0
-            employee.save()
+            form.save()
             return redirect("login")
 
     form = EmployeeForm
     data = {"form": form}
-    return render(request, "employee/create.html", data)
+    return render(request, "employee/create_employee.html", data)

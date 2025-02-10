@@ -11,7 +11,6 @@ class Employee(models.Model):
     contact_phone = models.CharField("Контактний телефон", max_length=19)
     email = models.CharField("Електронна пошта", max_length=60)
     password = models.CharField("Пароль", max_length=30)
-    profit = models.IntegerField("Прибуток")
 
     def __str__(self):
         return self.email
@@ -29,9 +28,9 @@ class Book(models.Model):
         return self.title
 
 
-class Sales(models.Model):
-    employee = models.CharField("Співробітник", max_length=80)
-    book = models.CharField("Книга", max_length=30)
+class Sale(models.Model):
+    employee = models.ForeignKey(Employee, on_delete=models.PROTECT)
+    book = models.ForeignKey(Book, on_delete=models.PROTECT)
     date = models.DateField("Дата продажу")
     real_selling_price = models.IntegerField("Реальна ціна продажу")
 
