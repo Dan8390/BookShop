@@ -35,4 +35,4 @@ class Sale(models.Model):
     real_selling_price = models.IntegerField("Реальна ціна продажу")
 
     def __str__(self):
-        return self.employee
+        return str(self.date)
