@@ -16,4 +16,7 @@
     <input type="datetime-local" name="end" id="end"><br><br>
     <button type="submit">Пошук</button><br><br>
 </form>
+{% block back %}
+    <a href="{% url 'moderator_menu' %}">Назад</a>
+{% endblock %}
 {% endblock %}

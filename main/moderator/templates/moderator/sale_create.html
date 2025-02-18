@@ -1,22 +1,26 @@
 {% extends 'main/layout.html' %}
 
 {% block title %}
-    <title>Sale create</title>
+    {% block name %}
+        <title>Sale create</title>
+    {% endblock %}
 {% endblock %}
 
 {% block content %}
-    <h1>Додавання продажу</h1>
+    {% block heading %}
+        <h1>Додавання продажу</h1>
+    {% endblock %}
     <form method="post">
         {% csrf_token %}
-        <label>Введіть співробітника:</label>
+        <label>Введіть id співробітника в базі даних:</label>
         {{ form.employee }}<br>
-        <label>Введіть назву книги:</label>
+        <label>Введіть id книги в базі даних:</label>
         {{ form.book }}<br>
         <label>Введіть дату продажу:</label>
         {{ form.date }}<br>
         <label>Введіть реальну ціну продажу:</label>
         {{ form.real_selling_price }}<br>
-        <button type="submit">Зберегти</button>
+        <button type="submit">Зберегти</button><br><br>
     </form>
 
 {% block back %}

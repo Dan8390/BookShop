@@ -1,3 +1,4 @@
+import django.forms
 from django.forms import ModelForm, TextInput, NumberInput, DateInput
 from employee.models import Book, Sale
 
@@ -28,21 +29,21 @@ class BookForm(ModelForm):
         }
 
 
-# class SaleForm(ModelForm):
-#     class Meta:
-#         model = Sale
-#         fields = ['employee', 'book', 'date', 'real_selling_price']
-#         widgets = {
-#             'employee': ForeignKey(attrs={
-#                 'class': 'form-control'
-#             }),
-#             'book': ForeignKey(attrs={
-#                 'class': 'form-control'
-#             }),
-#             'date': DateInput(attrs={
-#                 'class': 'form-control'
-#             }),
-#             'real_selling_price': NumberInput(attrs={
-#                 'class': 'form-control'
-#             })
-#         }
+class SaleForm(ModelForm):
+    class Meta:
+        model = Sale
+        fields = ['employee', 'book', 'date', 'real_selling_price']
+        widgets = {
+            'employee': TextInput(attrs={
+                'class': 'form-control'
+            }),
+            'book': TextInput(attrs={
+                'class': 'form-control'
+            }),
+            'date': DateInput(attrs={
+                'class': 'form-control'
+            }),
+            'real_selling_price': NumberInput(attrs={
+                'class': 'form-control'
+            })
+        }

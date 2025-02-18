@@ -5,10 +5,12 @@
 {% endblock %}
 
 {% block content %}
+<h1>Пошук продажів за датою</h1><br><br>
 <form method="post">
     {% csrf_token %}
     <label>Введіть дату:</label>
     <input type="date" name="date" id="date"><br><br>
     <button type="submit">Пошук</button><br><br>
 </form>
+<a href="{% url 'show_sales' %}">Назад</a>
 {% endblock %}

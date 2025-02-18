@@ -3,9 +3,10 @@
 {% block title %}
     <title>Sales</title>
 {% endblock %}
-<!--<a href="{% url 'sale_create' %}">Додати продаж</a><br><br>!-->
+
 {% block content %}
 <h1>Продажі</h1><br>
+<a href="{% url 'sale_create' %}">Додати продаж</a><br><br>
 <a href="{% url 'sale_search_by_date' %}">За дату</a><br>
 <a href="{% url 'sale_search_by_period' %}">За період</a><br>
 <a href="{% url 'sale_search_by_employee' %}">За співробітником</a><br><br>

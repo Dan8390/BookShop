@@ -5,7 +5,7 @@ import json
 from django.http import HttpResponse
 from employee.forms import EmployeeForm
 from employee.views import compute_sha512_hash
-from .forms import BookForm
+from .forms import BookForm, SaleForm
 from datetime import date
 
 # Create your views here.
@@ -32,6 +32,7 @@ class BookDeleteView(DeleteView):
 
 class SaleUpdateView(UpdateView):
     model = Sale
+    form_class = SaleForm
     template_name = "moderator/sale_update.html"
     success_url = ".."
 
@@ -190,24 +191,19 @@ def show_sales(request):
     return render(request, "moderator/sales.html", {'sales': sales})
 
 
-# def sale_create(request):
-#     if request.method == 'POST':
-#         form = SaleForm(request.POST)
-#         if form.is_valid():
-#             sale = form.save(commit=False)
-#             sale.employee = Employee.objects.get_or_create(surname=sale.surname, name=sale.name,
-#                                                            middle_name=sale.middle_name, position=sale.position,
-#                                                            contact_phone=sale.contact_phone, email=sale.email,
-#                                                            password=sale.password)
-#             sale.book = Book.objects.get_or_create(title=sale.title, year_of_publication=sale.year_of_publication,
-#                                                    author=sale.author, genre=sale.genre, cost=sale.cost,
-#                                                    potential_selling_price=sale.potential_selling_price)
-#             sale.save()
-#             return redirect('..')
-#     form = SaleForm()
-#     data = {'form': form}
-#     return render(request, 'moderator/sale_create.html', data)
-#
+def sale_create(request):
+    if request.method == 'POST':
+        form = SaleForm(request.POST)
+        if form.is_valid():
+            sale = form.save(commit=False)
+            sale.employee = Employee.objects.get(email=sale.employee)
+            sale.book = Book.objects.get(title=sale.book)
+            sale.save()
+            return redirect('..')
+    form = SaleForm()
+    data = {'form': form}
+    return render(request, 'moderator/sale_create.html', data)
+
 
 def show_sale_detail(request, sale_id):
     sale = get_object_or_404(Sale, id=sale_id)
@@ -251,12 +247,12 @@ def load_sales_from_file(request):
         with open('sales.json', 'r') as file:
             sales_data = json.load(file)
             for sale in sales_data.get('sales'):
-                Sale.objects.get_or_create(employee=Employee.objects.get_or_create(surname=sale['employee']['surname'],
+                Sale.objects.get_or_create(employee=Employee.objects.get(surname=sale['employee']['surname'],
                                            name=sale['employee']['name'], middle_name=sale['employee']['middle_name'],
                                            position=sale['employee']['position'],
                                            contact_phone=sale['employee']['contact_phone'],
                                            email=sale['employee']['email'], password=sale['employee']['password']),
-                                           book=Book.objects.get_or_create(title=sale['book']['title'],
+                                           book=Book.objects.get(title=sale['book']['title'],
                                            year_of_publication=sale['book']['year_of_publication'],
                                            author=sale['book']['author'], genre=sale['book']['genre'],
                                            cost=sale['book']['cost'],
@@ -302,7 +298,7 @@ def search_sales_by_period(request):
         sales_to_show = []
         for sale in sales:
             split_date = str(sale.date).split('-')
-            if start < date(int(split_date[0]), int(split_date[1]), int(split_date[2])).isoformat() < end:
+            if start <= date(int(split_date[0]), int(split_date[1]), int(split_date[2])).isoformat() < end:
                 sales_to_show.append(sale)
         return render(request, "moderator/sales_by_period.html", {"sales": sales_to_show})
     return render(request, "moderator/sale_search_by_period.html")
@@ -322,7 +318,7 @@ def search_most_popular_book(request):
         period_sales = []
         for sale in sales:
             split_date = str(sale.date).split('-')
-            if start < date(int(split_date[0]), int(split_date[1]), int(split_date[2])).isoformat() < end:
+            if start <= date(int(split_date[0]), int(split_date[1]), int(split_date[2])).isoformat() < end:
                 period_sales.append(sale)
         for sale in period_sales:
             books_dict[sale.book.title] += 1
@@ -348,7 +344,7 @@ def search_most_successful_trader(request):
         period_sales = []
         for sale in sales:
             split_date = str(sale.date).split('-')
-            if start < date(int(split_date[0]), int(split_date[1]), int(split_date[2])).isoformat() < end:
+            if start <= date(int(split_date[0]), int(split_date[1]), int(split_date[2])).isoformat() < end:
                 period_sales.append(sale)
         for sale in period_sales:
             traders_list.append(sale.employee)
@@ -374,7 +370,7 @@ def calculate_total_profit(request):
         period_sales = []
         for sale in sales:
             split_date = str(sale.date).split('-')
-            if start < date(int(split_date[0]), int(split_date[1]), int(split_date[2])).isoformat() < end:
+            if start <= date(int(split_date[0]), int(split_date[1]), int(split_date[2])).isoformat() < end:
                 period_sales.append(sale)
         total_profit = 0
         for sale in period_sales:
@@ -397,7 +393,7 @@ def search_most_popular_author(request):
         period_sales = []
         for sale in sales:
             split_date = str(sale.date).split('-')
-            if start < date(int(split_date[0]), int(split_date[1]), int(split_date[2])).isoformat() < end:
+            if start <= date(int(split_date[0]), int(split_date[1]), int(split_date[2])).isoformat() < end:
                 period_sales.append(sale)
         for sale in period_sales:
             authors_dict[sale.book.author] += 1
@@ -427,7 +423,7 @@ def search_most_popular_genre(request):
         period_sales = []
         for sale in sales:
             split_date = str(sale.date).split('-')
-            if start < date(int(split_date[0]), int(split_date[1]), int(split_date[2])).isoformat() < end:
+            if start <= date(int(split_date[0]), int(split_date[1]), int(split_date[2])).isoformat() < end:
                 period_sales.append(sale)
         for sale in period_sales:
             genres_dict[sale.book.genre] += 1

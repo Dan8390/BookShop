@@ -2,7 +2,9 @@
 
 {% block task %}
     <title>Sale search by period</title>
-    <h1>Пошук продажів за датою</h1><br><br>
+    <h1>Пошук продажів за період часу</h1><br><br>
 {% endblock %}
 
-
+{% block back %}
+    <a href="{% url 'show_sales' %}">Назад</a>
+{% endblock %}

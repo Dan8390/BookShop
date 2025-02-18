@@ -1,14 +1,17 @@
 {% extends 'main/layout.html' %}
 
 {% block title %}
-    <title>Sale search be employee</title>
+    <title>Sale search by employee</title>
 {% endblock %}
 
 {% block content %}
+<h1>Пошук продажів за співробітником</h1><br><br>
 <form method="post">
     {% csrf_token %}
     <label>Введіть електронну пошту співробітника:</label>
     <input type="text" name="email" id="email"><br><br>
     <button type="submit">Пошук</button><br><br>
 </form>
+
+<a href="{% url 'show_sales' %}">Назад</a>
 {% endblock %}
