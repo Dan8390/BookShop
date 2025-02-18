@@ -8,7 +8,7 @@
 <h1>Продажі</h1><br>
 <a href="{% url 'sale_search_by_date' %}">За дату</a><br>
 <a href="{% url 'sale_search_by_period' %}">За період</a><br>
-<a href="{% url 'sale_search_by_employee' %}">За співробітником</a><br>
+<a href="{% url 'sale_search_by_employee' %}">За співробітником</a><br><br>
 
     {% for sale in sales %}
     <div>

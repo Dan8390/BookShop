@@ -29,8 +29,8 @@ class Book(models.Model):
 
 
 class Sale(models.Model):
-    employee = models.ForeignKey(Employee, on_delete=models.PROTECT)
-    book = models.ForeignKey(Book, on_delete=models.PROTECT)
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
     date = models.DateField("Дата продажу")
     real_selling_price = models.IntegerField("Реальна ціна продажу")
 
