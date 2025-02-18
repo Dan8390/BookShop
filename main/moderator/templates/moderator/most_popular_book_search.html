@@ -1,9 +1,19 @@
 {% extends 'main/layout.html' %}
 
 {% block title %}
-    <title>Title</title>
+    {% block task %}
+        <title>Book search</title>
+        <h1>Пошук книги</h1><br><br>
+    {% endblock %}
 {% endblock %}
 
 {% block content %}
-
+<form method="post">
+    {% csrf_token %}
+    <label>Введіть початок відліку:</label>
+    <input type="datetime-local" name="start" id="start"><br><br>
+    <label>Введіть кінець відліку:</label>
+    <input type="datetime-local" name="end" id="end"><br><br>
+    <button type="submit">Пошук</button><br><br>
+</form>
 {% endblock %}

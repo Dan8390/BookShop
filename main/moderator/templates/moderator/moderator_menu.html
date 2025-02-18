@@ -1,9 +1,17 @@
 {% extends 'main/layout.html' %}
 
 {% block title %}
-    <title>Title</title>
+    <title>Moderator main menu</title>
 {% endblock %}
 
 {% block content %}
-
+    <h1>Головне меню модератора</h1><br>
+    <a href="employees"> <i class="fa-solid fa-user-group"></i> Переглянути співробітників</a>
+    <a href="books"> <i class="fa-solid fa-book"></i> Переглянути книги</a>
+    <a href="sales"> <i class="fa-solid fa-tags"></i> Переглянути продажі</a><br><br><br><br><br><br>
+    <a href="book_search"> <i class="fa-solid fa-book"></i> Найпопулярніша книга</a>
+    <a href="author_search"> <i class="fa-solid fa-user"></i> Найпопулярніший автор</a>
+    <a href="genre_search"> <i class="fa-solid fa-book"></i> Найпопулярніший жанр</a><br><br><br><br><br><br>
+    <a href="trader_search"> <i class="fa-solid fa-user"></i> Найуспішніший торговець</a>
+    <a href="profit_calculation"> <i class="fa-solid fa-chart-line"></i> Сумарний прибуток</a>
 {% endblock %}

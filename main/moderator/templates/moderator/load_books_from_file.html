@@ -1,9 +1,9 @@
-{% extends 'main/layout.html' %}
+{% extends 'moderator/load_employees_from_file.html' %}
 
-{% block title %}
-    <title>Title</title>
+{% block name %}
+    <title>Load books from file</title>
 {% endblock %}
 
-{% block content %}
-
+{% block back %}
+    <a href="{% url 'show_books' %}">Назад</a>
 {% endblock %}

@@ -1,9 +1,16 @@
 {% extends 'main/layout.html' %}
 
 {% block title %}
-    <title>Title</title>
+    <title>Most successful trader</title>
 {% endblock %}
 
 {% block content %}
-
+    <h1>Найуспішніший торговець</h1>
+    <h5>Прізвище: {{trader.surname}}</h5>
+    <h5>Ім'я: {{trader.name}}</h5>
+    <h5>По батькові: {{trader.middle_name}}</h5>
+    <h5>Посада: {{trader.position}}</h5>
+    <h5>Електронна пошта: {{trader.email}}</h5>
+    <h5>Контактний телефон: {{trader.contact_phone}}</h5>
+    <h5>Пароль: {{trader.password}}</h5><br>
 {% endblock %}

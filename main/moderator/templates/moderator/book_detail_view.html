@@ -1,9 +1,24 @@
 {% extends 'main/layout.html' %}
 
 {% block title %}
-    <title>Title</title>
+    <title>Book detail</title>
 {% endblock %}
 
 {% block content %}
+<h1>Про книгу</h1><br>
+<div>
+    <h3>{{book.title}}</h3>
+    <h6>Рік публікації: {{book.year_of_publication}}</h6>
+    <h6>Автор: {{book.author}}</h6>
+    <h6>Жанр: {{book.genre}}</h6>
+    <h6>Собівартість: {{book.cost}} грн</h6>
+    <h6>Потенційна ціна продажу: {{book.potential_selling_price}} грн</h6>
+    <a href="{% url 'book_update' book.id %}">Редагувати дані книги</a>
+    <a href="{% url 'book_delete' book.id %}">Видалити книгу</a>
 
+    <br>
+    <br>
+</div>
+
+<a href="{% url 'show_books' %}">Назад</a>
 {% endblock %}

@@ -1,9 +1,33 @@
 {% extends 'main/layout.html' %}
 
 {% block title %}
-    <title>Title</title>
+    {% block name %}
+        <title>Book create</title>
+    {% endblock %}
 {% endblock %}
 
 {% block content %}
+    {% block heading %}
+        <h1>Додавання книги</h1>
+    {% endblock %}
+    <form method="post">
+        {% csrf_token %}
+        <label>Введіть назву:</label>
+        {{ form.title }}<br>
+        <label>Введіть рік публікації:</label>
+        {{ form.year_of_publication }}<br>
+        <label>Введіть автора:</label>
+        {{ form.author }}<br>
+        <label>Введіть жанр:</label>
+        {{ form.genre }}<br>
+        <label>Введіть собівартість:</label>
+        {{ form.cost }}<br>
+        <label>Введіть потенційну ціну продажу:</label>
+        {{ form.potential_selling_price }}<br>
+        <button type="submit">Зберегти</button><br><br>
+    </form>
 
+{% block back %}
+    <a href="{% url 'show_books' %}">Назад</a>
+{% endblock %}
 {% endblock %}

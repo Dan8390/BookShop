@@ -1,0 +1,16 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+    <title>Employee delete</title>
+{% endblock %}
+
+{% block content %}
+<h1>Чи Ви впевнені, що хочете видалити акаунт цього співробітника?</h1><br>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Так, видалити акаунт співробітника</button>
+</form>
+<br>
+<a href="{% url 'employee_detail' employee_id=employee.id %}">Ні, повернутись назад</a>
+{% endblock %}

@@ -1,29 +1,14 @@
-{% extends 'main/layout.html' %}
+{% extends 'employee/create_employee.html' %}
 
-{% block title %}
+{% block name %}
     <title>Employee update</title>
 {% endblock %}
 
-{% block content %}
+{% block heading %}
     <h1>Редагування акаунту</h1><br>
-    <form method="post">
-        {% csrf_token %}
-        <label>Введіть прізвище:</label>
-        {{ form.surname }}<br>
-        <label>Введіть ім'я:</label>
-        {{ form.name }}<br>
-        <label>Введіть по батькові:</label>
-        {{ form.middle_name }}<br>
-        <label>Введіть назву посади:</label>
-        {{ form.position }}<br>
-        <label>Введіть контактний телефон:</label>
-        {{ form.contact_phone }}<br>
-        <label>Введіть email:</label>
-        {{ form.email }}<br>
-        <label>Введіть пароль:</label>
-        {{ form.password }}<br>
-        <button type="submit">Зберегти</button><br><br>
-    </form>
+{% endblock %}
 
-<a href="{% url 'account' employee_id=employee.id %}">Назад</a>
+{% block button %}
+    <button type="submit">Зберегти</button><br><br>
+    <a href="{% url 'account' employee_id=employee.id %}">Назад</a>
 {% endblock %}

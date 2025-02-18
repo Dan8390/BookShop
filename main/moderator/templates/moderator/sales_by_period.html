@@ -1,9 +1,19 @@
 {% extends 'main/layout.html' %}
 
 {% block title %}
-    <title>Title</title>
+    <title>Sales by period</title>
+    <h1>Продажі за період часу</h1>
 {% endblock %}
 
 {% block content %}
-
+{% for sale in sales %}
+<div>
+    <h3>Співробітник: {{sale.employee.email}}</h3>
+    <h6>Книга: {{sale.book.title}}</h6>
+    <h6>Дата продажу: {{sale.date}}</h6>
+    <h6>Реальна ціна продажу: {{sale.real_selling_price}}</h6>
+    <br>
+    <br>
+</div>
+{% endfor %}
 {% endblock %}

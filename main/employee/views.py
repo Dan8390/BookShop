@@ -9,9 +9,9 @@ import hashlib
 
 class EmployeeUpdateView(UpdateView):
     model = Employee
-    success_url = "../.."
     template_name = "employee/employee_update.html"
     form_class = EmployeeForm
+    success_url = "../.."
 
 
 def compute_sha512_hash(input_string):
@@ -27,7 +27,7 @@ def show_employee_menu(request, employee_id):
 
 def show_account(request, employee_id):
     employee = get_object_or_404(Employee, id=employee_id)
-    return render(request, "employee/account.html", {'employee': employee})
+    return render(request, "employee/account.html", {'employee': employee, 'employee_id': employee_id})
 
 
 def show_library(request, employee_id):
@@ -55,9 +55,9 @@ def show_login(request):
             employee = Employee.objects.get(email=email, password=hash_password)
             return redirect("employee_menu", employee_id=employee.id)
         except:
-            return render(request, "employee/login.html")
+            return render(request, "employee/employee_login.html")
 
-    return render(request, "employee/login.html")
+    return render(request, "employee/employee_login.html")
 
 
 def show_create(request):

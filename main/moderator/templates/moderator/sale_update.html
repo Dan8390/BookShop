@@ -1,0 +1,13 @@
+{% extends 'moderator/sale_create.html' %}
+
+{% block name %}
+    <title>Sale update</title>
+{% endblock %}
+
+{% block heading %}
+    <h1>Редагування даних продажу</h1>
+{% endblock %}
+
+{% block back %}
+    <a href="{% url 'sale_detail' sale.id %}">Назад</a>
+{% endblock %}

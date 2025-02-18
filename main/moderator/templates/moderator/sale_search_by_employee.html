@@ -1,9 +1,14 @@
 {% extends 'main/layout.html' %}
 
 {% block title %}
-    <title>Title</title>
+    <title>Sale search be employee</title>
 {% endblock %}
 
 {% block content %}
-
+<form method="post">
+    {% csrf_token %}
+    <label>Введіть електронну пошту співробітника:</label>
+    <input type="text" name="email" id="email"><br><br>
+    <button type="submit">Пошук</button><br><br>
+</form>
 {% endblock %}

@@ -1,15 +1,11 @@
 {% extends 'main/layout.html' %}
 
 {% block title %}
-    {% block name %}
-        <title>Employee registration</title>
-    {% endblock %}
+    <title>Moderator registration</title>
 {% endblock %}
 
 {% block content %}
-{% block heading %}
-    <h1>Реєстрація співробітника</h1><br>
-{% endblock %}
+    <h1>Реєстрація модератора</h1><br>
     <form method="post">
         {% csrf_token %}
         <label>Введіть прізвище:</label>
@@ -26,8 +22,6 @@
         {{ form.email }}<br>
         <label>Введіть пароль:</label>
         {{ form.password }}<br>
-        {% block button %}
-            <button type="submit">Зареєструватися</button>
-        {% endblock %}
+        <button type="submit">Зареєструватися</button>
     </form>
 {% endblock %}

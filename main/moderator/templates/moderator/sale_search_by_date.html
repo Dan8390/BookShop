@@ -1,9 +1,14 @@
 {% extends 'main/layout.html' %}
 
 {% block title %}
-    <title>Title</title>
+    <title>Sale search by date</title>
 {% endblock %}
 
 {% block content %}
-
+<form method="post">
+    {% csrf_token %}
+    <label>Введіть дату:</label>
+    <input type="date" name="date" id="date"><br><br>
+    <button type="submit">Пошук</button><br><br>
+</form>
 {% endblock %}

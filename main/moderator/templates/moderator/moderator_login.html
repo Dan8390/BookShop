@@ -1,19 +1,18 @@
 {% extends 'main/layout.html' %}
 
 {% block title %}
-    <title>Login</title>
+    <title>Moderator login</title>
 {% endblock %}
 
 {% block content %}
-    <h1>Вхід для співробітника</h1><br>
+    <h1>Вхід для модератора</h1><br>
     <form method="post">
         {% csrf_token %}
         <p>Логін:</p>
         <input type="text" name="email" required><br><br>
         <p>Пароль:</p>
         <input type="text" name="password" required><br><br>
-        <button type="submit">Увійти</button><br><br><br>
-        <a href="{% url 'create' %}">Зареєструватися</a>
+        <button type="submit">Увійти</button><br><br>
+        <a href="{% url 'moderator_create' %}">Зареєструватися</a><br>
     </form>
-    <!--<a href="{% url 'welcome_page' %}">Назад</a>!-->
 {% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'moderator/book_create.html' %}
+
+{% block name %}
+    <title>Book update</title>
+{% endblock %}
+
+{% block heading %}
+    <h1>Редагування даних книги</h1>
+{% endblock %}
+
+{% block back %}
+    <a href="{% url 'book_detail' book.id %}">Назад</a>
+{% endblock %}

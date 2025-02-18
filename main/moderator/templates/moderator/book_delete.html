@@ -1,9 +1,16 @@
 {% extends 'main/layout.html' %}
 
 {% block title %}
-    <title>Title</title>
+    <title>Book delete</title>
 {% endblock %}
 
 {% block content %}
+<h1>Чи Ви впевнені, що хочете видалити цю книгу?</h1><br>
 
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Так, видалити книгу</button>
+</form>
+<br>
+<a href="{% url 'book_detail' book_id=book.id %}">Ні, повернутись назад</a>
 {% endblock %}

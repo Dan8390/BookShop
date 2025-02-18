@@ -1,9 +1,15 @@
 {% extends 'main/layout.html' %}
 
 {% block title %}
-    <title>Title</title>
+    {% block name %}
+        <title>Save employees to file</title>
+    {% endblock %}
 {% endblock %}
 
 {% block content %}
-
+    <h1>Збереження успішне</h1>
+    <p>Дані були успішно збережені в json-файл</p>
+    {% block back %}
+        <a href="{% url 'show_employees' %}">Назад</a>
+    {% endblock %}
 {% endblock %}

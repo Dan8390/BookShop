@@ -1,9 +1,16 @@
 {% extends 'main/layout.html' %}
 
 {% block title %}
-    <title>Title</title>
+    <title>Sale delete</title>
 {% endblock %}
 
 {% block content %}
+<h1>Чи Ви впевнені, що хочете видалити цей продаж?</h1><br>
 
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Так, видалити продаж</button>
+</form>
+<br>
+<a href="{% url 'sale_detail' sale_id=sale.id %}">Ні, повернутись назад</a>
 {% endblock %}

@@ -1,9 +1,26 @@
 {% extends 'main/layout.html' %}
 
 {% block title %}
-    <title>Title</title>
+    <title>Books</title>
 {% endblock %}
 
 {% block content %}
+<h1>Магазин</h1><br>
+    <a href="{% url 'book_create' %}">Додати книгу</a><br><br>
 
+    {% for book in books %}
+    <div>
+        <h4>{{book.title}}</h4>
+
+        <a href="{% url 'book_detail' book_id=book.id %}">Детальніше</a>
+
+        <br>
+        <br>
+    </div>
+    {% endfor %}
+
+    <a href="{% url 'save_books_to_file' %}">Створити резервну копію таблиці книг</a><br>
+    <a href="{% url 'load_books_from_file' %}">Завантажити дані книг з резервного файлу</a><br><br>
+
+    <a href="{% url 'moderator_menu' %}">Назад</a>
 {% endblock %}

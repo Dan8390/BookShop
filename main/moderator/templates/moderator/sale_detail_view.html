@@ -1,9 +1,22 @@
 {% extends 'main/layout.html' %}
 
 {% block title %}
-    <title>Title</title>
+    <title>Sale detail</title>
 {% endblock %}
 
 {% block content %}
+<h1>Про продаж</h1><br>
+<div>
+    <h3>Співробітник: {{sale.employee.email}}</h3>
+    <h6>Книга: {{sale.book.title}}</h6>
+    <h6>Дата продажу: {{sale.date}}</h6>
+    <h6>Реальна ціна продажу: {{sale.real_selling_price}} грн</h6>
+    <a href="{% url 'sale_update' sale.id %}">Редагувати дані продажу</a>
+    <a href="{% url 'sale_delete' sale.id %}">Видалити продаж</a>
 
+    <br>
+    <br>
+</div>
+
+<a href="{% url 'show_sales' %}">Назад</a>
 {% endblock %}

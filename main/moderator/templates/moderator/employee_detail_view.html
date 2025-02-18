@@ -1,9 +1,25 @@
 {% extends 'main/layout.html' %}
 
 {% block title %}
-    <title>Title</title>
+    <title>Employee detail</title>
 {% endblock %}
 
 {% block content %}
+<h1>Про співробітника</h1><br>
+<div>
+    <h3>Прізвище: {{employee.surname}}</h3>
+    <h6>Ім'я: {{employee.name}}</h6>
+    <h6>По батькові: {{employee.middle_name}}</h6>
+    <h6>Посада: {{employee.position}}</h6>
+    <h6>Контактний телефон: {{employee.contact_phone}}</h6>
+    <h6>Електронна пошта: {{employee.email}}</h6>
+    <h6>Пароль: {{employee.password}}</h6>
 
+    <a href="{% url 'employee_delete' employee.id %}">Видалити співробітника</a>
+
+    <br>
+    <br>
+</div>
+
+<a href="{% url 'show_employees' %}">Назад</a>
 {% endblock %}
